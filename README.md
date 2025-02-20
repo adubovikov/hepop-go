@@ -1,10 +1,10 @@
 # HEPop-Go
 
-HEPop-Go is a high-performance, scalable HEP (Homer Encapsulation Protocol) server written in Go. It is designed to efficiently process and store HEP packets in various storage backends, including ClickHouse, Elasticsearch, and Parquet.
+HEPop-Go is a high-performance, scalable HEP (Homer Encapsulation Protocol) server written in Go. It is designed to efficiently process and store HEP packets in various storage backends, including ClickHouse, Elasticsearch, Parquet, and DuckDB.
 
 ## Features
 
-- Supports multiple storage backends: ClickHouse, Elasticsearch, Loki, and Parquet.
+- Supports multiple storage backends: ClickHouse, Elasticsearch, Loki, Parquet, and DuckDB.
 - Provides a RESTful API for searching and retrieving HEP packets.
 - Configurable via a YAML configuration file.
 - Supports Prometheus metrics for monitoring.
@@ -22,7 +22,7 @@ HEPop-Go is a high-performance, scalable HEP (Homer Encapsulation Protocol) serv
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/sipcapture/hepop-go.git
+   git clone https://github.com/yourusername/hepop-go.git
    cd hepop-go
    ```
 
@@ -69,6 +69,22 @@ api:
   write_timeout: 10s
 ```
 
+## Parquet Support
+
+HEPop-Go supports writing HEP packets to Parquet files, which are efficient for storage and analytics. The `ParquetBufferManager` handles buffering and writing of packets to Parquet files, ensuring efficient data management.
+
+### Configuration
+
+To use Parquet as a storage backend, configure the `writers` section in your YAML file as shown above.
+
+## DuckDB Integration
+
+HEPop-Go integrates with DuckDB to allow SQL-like querying of Parquet files. This enables powerful data analysis capabilities directly on the stored data.
+
+### Usage
+
+The `DuckDBManager` provides an interface to execute SQL queries on Parquet files. This can be used to perform complex queries and data analysis.
+
 ## Usage
 
 ### Starting the Server
@@ -90,7 +106,7 @@ Contributions are welcome! Please fork the repository and submit a pull request 
 
 ## License
 
-This project is licensed under the AGPLv3 License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Contact
 

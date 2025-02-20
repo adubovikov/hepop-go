@@ -1,61 +1,61 @@
-# Makefile для проекта HEPop-Go
+# Makefile for HEPop-Go
 
-# Переменные
+# Variables
 BINARY_NAME=hepop-go
 SRC_DIR=./cmd/hepop
 CONFIG_FILE=config/config.yaml
 
-# Команды
+# Commands
 .PHONY: all build test clean run
 
 all: build
 
 build:
-	@echo "Сборка проекта..."
+	@echo "Building project..."
 	go build -o $(BINARY_NAME) $(SRC_DIR)
 
 test:
-	@echo "Запуск тестов..."
+	@echo "Running tests..."
 	go test ./... -v
 
 clean:
-	@echo "Очистка..."
+	@echo "Cleaning..."
 	rm -f $(BINARY_NAME)
 
 run: build
-	@echo "Запуск проекта..."
+	@echo "Running project..."
 	./$(BINARY_NAME) -config $(CONFIG_FILE)
 
 lint:
-	@echo "Запуск линтера..."
+	@echo "Running linter..."
 	golangci-lint run
 
 fmt:
-	@echo "Форматирование кода..."
+	@echo "Formatting code..."
 	go fmt ./...
 
 tidy:
-	@echo "Обновление зависимостей..."
+	@echo "Updating dependencies..."
 	go mod tidy
 
-# Дополнительные команды
+# Additional commands
 docker-build:
-	@echo "Сборка Docker образа..."
+	@echo "Building Docker image..."
 	docker build -t $(BINARY_NAME):latest .
 
 docker-run:
-	@echo "Запуск Docker контейнера..."
+	@echo "Running Docker container..."
 	docker run --rm -p 8080:8080 -p 9060:9060 $(BINARY_NAME):latest
 
-# Команда помощи
+# Help command
 help:
-	@echo "Доступные команды:"
-	@echo "  make build       - Сборка проекта"
-	@echo "  make test        - Запуск тестов"
-	@echo "  make clean       - Очистка артефактов сборки"
-	@echo "  make run         - Сборка и запуск проекта"
-	@echo "  make lint        - Запуск линтера"
-	@echo "  make fmt         - Форматирование кода"
-	@echo "  make tidy        - Обновление зависимостей"
-	@echo "  make docker-build - Сборка Docker образа"
-	@echo "  make docker-run  - Запуск Docker контейнера"
+	@echo "Available commands:"
+	@echo "  make build       - Build project"
+	@echo "  make test        - Run tests"
+	@echo "  make clean       - Clean build artifacts"
+	@echo "  make run         - Build and run project"
+	@echo "  make lint        - Run linter"
+	@echo "  make fmt         - Format code"
+	@echo "  make tidy        - Update dependencies"
+	@echo "  make docker-build - Build Docker image"
+	@echo "  make docker-run  - Run Docker container"
