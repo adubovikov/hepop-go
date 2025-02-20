@@ -1,13 +1,4 @@
 writers:
-  type: "clickhouse"
-  batch_size: 1000
-  flush_interval: "1s"
-
-  clickhouse:
-    host: "localhost"
-    port: 9000
-    database: "hep"
-    table: "packets"
-    username: "default"
-    password: ""
-    debug: false
+  type: "parquet"
+  parquet:
+    file_path: "/path/to/output.parquet"

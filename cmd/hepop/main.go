@@ -68,6 +68,10 @@ func initializeWriter(cfg *config.Config) (writer.Writer, error) {
 		})
 	case "elastic":
 		return writer.NewElasticWriter(writer.ElasticConfig{})
+	case "parquet":
+		return writer.NewParquetWriter(writer.ParquetConfig{
+			FilePath: cfg.Writers.Parquet.FilePath,
+		})
 	// Add other writer types if necessary
 	default:
 		return nil, fmt.Errorf("unknown writer type: %s", cfg.Writers.Type)

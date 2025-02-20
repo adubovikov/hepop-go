@@ -33,6 +33,11 @@ type WritersConfig struct {
 	// Specific writer configs
 	ClickHouse *ClickHouseConfig `yaml:"clickhouse,omitempty"`
 	Elastic    *ElasticConfig    `yaml:"elastic,omitempty"`
+	Parquet    *ParquetConfig    `yaml:"parquet,omitempty"`
+}
+
+type ParquetConfig struct {
+	FilePath string `yaml:"file_path"`
 }
 
 type ClickHouseConfig struct {

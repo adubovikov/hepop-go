@@ -35,12 +35,12 @@ type SearchResult struct {
 
 // WriterStats contains writer statistics
 type WriterStats struct {
-	PacketsReceived uint64
-	PacketsWritten  uint64
-	BytesWritten    uint64
-	Errors          uint64
-	LastError       error
-	LastWrite       time.Time
+	FileSize     int64
+	NumRecords   int64
+	FilePath     string
+	LastModified string
+	Errors       int64
+	LastError    error
 }
 
 // BaseWriter provides a base implementation for all writers
@@ -53,11 +53,11 @@ func (w *BaseWriter) updateStats(written bool, bytes uint64, err error) {
 	w.mu.Lock()
 	defer w.mu.Unlock()
 
-	w.stats.PacketsReceived++
+	w.stats.NumRecords++
 	if written {
-		w.stats.PacketsWritten++
-		w.stats.BytesWritten += bytes
-		w.stats.LastWrite = time.Now()
+		w.stats.NumRecords++
+		w.stats.FileSize += int64(bytes)
+		w.stats.LastModified = time.Now().String()
 	}
 	if err != nil {
 		w.stats.Errors++
