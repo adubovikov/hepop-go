@@ -4,7 +4,7 @@ HEPop-Go is a high-performance, scalable HEP (Homer Encapsulation Protocol) serv
 
 ## Features
 
-- Supports multiple storage backends: ClickHouse, Elasticsearch, Loki, Parquet, and DuckDB.
+- Supports multiple storage backends: ClickHouse, Elasticsearch, Parquet, and DuckDB.
 - Provides a RESTful API for searching and retrieving HEP packets.
 - Configurable via a YAML configuration file.
 - Supports Prometheus metrics for monitoring.
@@ -22,7 +22,7 @@ HEPop-Go is a high-performance, scalable HEP (Homer Encapsulation Protocol) serv
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/hepop-go.git
+   git clone https://github.com/sipcapture/hepop-go.git
    cd hepop-go
    ```
 
