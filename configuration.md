@@ -1,62 +1,57 @@
-# Конфигурация HEPop-Go
+# HEPop-Go Configuration
 
-## Общая структура
+## General Structure
 
-Конфигурация HEPop-Go хранится в YAML файле и состоит из следующих основных секций:
-- Server - настройки HEP сервера
-- Writers - настройки систем хранения
-- API - настройки HTTP API
-- Metrics - настройки Prometheus метрик
+The configuration for HEPop-Go is stored in a YAML file and consists of the following main sections:
+- Server - HEP server settings
+- Writers - storage system settings
+- API - HTTP API settings
+- Metrics - Prometheus metrics settings
 
-## Параметры конфигурации
+## Configuration Parameters
 
 ### Server
 
-- `host` - IP адрес для прослушивания
-- `port` - порт для прослушивания
-- `protocol` - протокол (udp, tcp, оба)
-- `max_packet_size` - максимальный размер пакета
-- `read_timeout` - таймаут чтения
-- `write_timeout` - таймаут записи
-- `workers` - количество рабочих потоков
+- `host` - IP address for listening
+- `port` - port for listening
+- `protocol` - protocol (udp, tcp, both)
+- `max_packet_size` - maximum packet size
+- `read_timeout` - read timeout
+- `write_timeout` - write timeout
+- `workers` - number of worker threads
 
 ### Writers
 
-- `type` - тип системы хранения (clickhouse, elastic, loki, multi)
-- `batch_size` - размер пакета для записи
-- `flush_interval` - интервал сброса буферов
+- `type` - type of storage system (clickhouse, elastic, loki, multi)
+- `batch_size` - batch size for writing
+- `flush_interval` - buffer flush interval
 
 #### ClickHouse
 
-- `host` - IP адрес ClickHouse
-- `port` - порт ClickHouse
-- `database` - имя базы данных
-- `table` - имя таблицы
-- `username` - имя пользователя
-- `password` - пароль пользователя
-- `debug` - включить режим отладки
+- `host` - ClickHouse IP address
+- `port` - ClickHouse port
+- `database` - database name
+- `table` - table name
+- `username` - username
+- `password` - user password
+- `debug` - enable debug mode
 
 #### Elasticsearch
 
-- `urls` - список URL Elasticsearch
-- `index_name` - имя индекса
-- `username` - имя пользователя
-- `password` - пароль пользователя
-- `debug` - включить режим отладки
+- `urls` - list of Elasticsearch URLs
+- `index_name` - index name
+- `username` - username
+- `password` - user password
+- `debug` - enable debug mode
 
-#### Loki
-
-- `url` - URL Loki
-- `labels` - метки для Loki
-- `debug` - включить режим отладки
 
 ### API
 
-- `host` - IP адрес для прослушивания
-- `port` - порт для прослушивания
-- `enable_metrics` - включить Prometheus метрики
-- `enable_pprof` - включить pprof профилирование
-- `auth_token` - токен для аутентификации
-- `cors_origins` - список допустимых CORS источников
-- `read_timeout` - таймаут чтения
-- `write_timeout` - таймаут записи
+- `host` - IP address for listening
+- `port` - port for listening
+- `enable_metrics` - enable Prometheus metrics
+- `enable_pprof` - enable pprof profiling
+- `auth_token` - authentication token
+- `cors_origins` - list of allowed CORS origins
+- `read_timeout` - read timeout
+- `write_timeout` - write timeout
